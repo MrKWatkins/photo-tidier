@@ -1,8 +1,10 @@
 mod configuration;
+mod photos;
 
 use std::fs;
 use std::io;
 use std::path::Path;
+use crate::photos::Photo;
 
 fn main()
 {
@@ -22,11 +24,13 @@ fn output_directory(directory: &Path) -> io::Result<()>
         let path = entry.path();
         if path.is_file()
         {
-            if let Some(file_name) = path.file_name().and_then(|f| f.to_str())
-            {
-                println!("{}", file_name);
-            }
+            let photo = Photo::new(path);
+
+            println!("{}", photo.get_path_string());
+            photo.print_exif();
         }
+
+        break;
     }
     Ok(())
 }
