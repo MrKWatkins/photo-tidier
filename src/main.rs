@@ -24,7 +24,7 @@ fn output_directory(directory: &Path) -> io::Result<()>
         let path = entry.path();
         if path.is_file()
         {
-            let photo = Photo::new(path);
+            let photo = Photo::new(&path);
 
             println!("{}", photo.get_path_string());
             photo.print_exif();
