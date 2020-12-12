@@ -1,36 +1,26 @@
 mod configuration;
-mod photos;
+mod file;
+mod photo;
 
-use std::fs::read_dir;
-use std::io;
+use crate::file::read_files_in_dir_sorted;
+use crate::photo::Photo;
+use std::io::Result;
 use std::path::Path;
-use crate::photos::Photo;
 
-fn main()
-{
+fn main() {
     let arguments = configuration::get();
 
-    output_directory(arguments.source.as_path())
-        .unwrap_or_else(|e| println!("Unexpected error: {}", e.to_string()));
+    process_directory(&arguments.source, &arguments.target).unwrap_or_else(|e| println!("Unexpected error: {}", e.to_string()));
 }
 
-fn output_directory(directory: &Path) -> io::Result<()>
-{
-    println!("Directory: {}", directory.display().to_string());
+fn process_directory(source: &Path, target: &Path) -> Result<()> {
+    println!("Processing source directory {}", source.display().to_string());
 
-    for entry in read_dir(directory)?
-    {
-        let entry = entry?;
-        let path = entry.path();
-        if path.is_file()
-        {
-            let photo = Photo::new(&path)?;
+    for path in read_files_in_dir_sorted(source)? {
+        println!("Processing {:?}...", path);
 
-            println!("{}", photo.get_path_string());
-            photo.print_exif();
-        }
-
-        break;
+        let photo = Photo::new(&path)?;
+        photo.copy_to(target)?;
     }
     return Ok(());
 }
