@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::BufReader;
+use std::io::{BufReader, Error, ErrorKind};
 use std::path::PathBuf;
 use exif::Exif;
 use once_cell::unsync::OnceCell;
@@ -12,14 +12,18 @@ pub struct Photo
 
 impl Photo
 {
-    pub fn new(path: &PathBuf) -> Photo
+    pub fn new(path: &PathBuf) -> Result<Photo, Error>
     {
-        if path.is_file()
+        if !path.exists()
         {
-            return Photo { path: path.clone(), exif: OnceCell::new() };
+            return Err(Error::new(ErrorKind::NotFound, format!("The path {:?} does not exist.", path)));
+        }
+        if !path.is_file()
+        {
+            return Err(Error::new(ErrorKind::InvalidInput, format!("The path {:?} is not a file.", path)));
         }
 
-        panic!("path is not a file.");
+        return Ok(Photo { path: path.clone(), exif: OnceCell::new() });
     }
 
     pub fn get_path_string(&self) -> &str

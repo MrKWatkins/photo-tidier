@@ -14,8 +14,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ef1cedec-c2d1-4aa0-982c-d4f5f00a5a39" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/photos/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/photos/mod.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +95,8 @@
       <workItem from="1607161986585" duration="23000" />
       <workItem from="1607162015816" duration="4750000" />
       <workItem from="1607549711492" duration="5297000" />
-      <workItem from="1607557006963" duration="1584000" />
+      <workItem from="1607557006963" duration="1797000" />
+      <workItem from="1607762826835" duration="1462000" />
     </task>
     <task id="LOCAL-00001" summary="Add an input directory to command line options.">
       <created>1607170955279</created>
@@ -112,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607555045152</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Use OnceCell for lazy initialization.">
+      <created>1607558755793</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607558755793</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +140,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add an input directory to command line options." />
     <MESSAGE value="Read EXIF fields from photos." />
-    <option name="LAST_COMMIT_MESSAGE" value="Read EXIF fields from photos." />
+    <MESSAGE value="Use OnceCell for lazy initialization." />
+    <option name="LAST_COMMIT_MESSAGE" value="Use OnceCell for lazy initialization." />
   </component>
 </project>
